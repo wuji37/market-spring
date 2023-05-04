@@ -1,0 +1,4 @@
+# 项目排除路径
+/admin-service/target/
+/business-service/target/
+/user-service/target/

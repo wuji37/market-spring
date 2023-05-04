@@ -1,0 +1,20 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3307/business?useSSL=false&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+
+  application:
+    name: businessService
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+mybatis:
+  type-aliases-package: cn.itcast.business.pojo
+  configuration:
+    map-underscore-to-camel-case: true
