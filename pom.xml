@@ -13,6 +13,7 @@
         <module>user-service</module>
         <module>admin-service</module>
         <module>gateway</module>
+        <module>fein-api</module>
     </modules>
 
     <!--    <modules>-->

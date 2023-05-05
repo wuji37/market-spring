@@ -28,25 +28,25 @@ public class BusinessService {
         return businessMapper.getBusinessById(id);
     }
 
-    public AllUser getBusinessByUserId(int id){
+    public Business getBusinessByUserId(int id){
         return businessMapper.getBusinessByUserId(id);
     }
 
 
     public void updateBusiness(Business business){
-        businessMapper.updateBusiness(business.getBusiness_user_id(),business.getName(),business.getIntroduction(),business.getPhoto());
+        businessMapper.updateBusiness(business.getBusinessUserId(),business.getName(),business.getIntroduction(),business.getPhoto());
     }
 
-    public void insertUser(Business business){
+    public void insertBusiness(Business business){
         //int userId,String name,String intro,float score,Blob photo
-        businessMapper.insertBusiness(business.getBusiness_user_id(),business.getName(),business.getIntroduction(),business.getScore(),business.getPhoto());
+        businessMapper.insertBusiness(business.getBusinessUserId(),business.getName(),business.getIntroduction(),business.getScore(),business.getPhoto());
     }
 
     public void deleteBusinessById(int id){
         businessMapper.deleteBusinessById(id);
     }
 
-    public void deleteBusinessByUsername(int userId){
+    public void deleteBusinessByUserId(int userId){
         businessMapper.deleteBusinessByUserId(userId);
     }
 }

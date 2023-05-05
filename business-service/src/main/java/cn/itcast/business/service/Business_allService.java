@@ -33,14 +33,22 @@ public class Business_allService {
         return business_allMapper.getBusinessByUserId(id);
     }
 
+    public List<Business_all> getBusinessByBusinessUserId(int id){
+        return business_allMapper.getBusinessByBusinessUserId(id);
+    }
+
+    public List<Business_all> getBusinessByBusinessId(int id){
+        return business_allMapper.getBusinessByBusinesssId(id);
+    }
+
     public void updateBusiness_all(Business_all business_all){
         //nt userId,int business_id,int business_user_id
-        business_allMapper.updateBusiness_all(business_all.getUser_id(),business_all.getBusiness_id(), business_all.getBusiness_user_id());
+        business_allMapper.updateBusiness_all(business_all.getUserId(),business_all.getBusinessId(), business_all.getBusinessUserId(),business_all.getId());
     }
 
 
     public void insertBusiness(Business_all business_all){
-        business_allMapper.insertBusiness(business_all.getUser_id(),business_all.getBusiness_id(), business_all.getBusiness_user_id());
+        business_allMapper.insertBusiness(business_all.getUserId(),business_all.getBusinessId(), business_all.getBusinessUserId());
     }
 
 

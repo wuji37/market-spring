@@ -19,6 +19,7 @@ public class GoodsService {
     }
 
 
+
     public Goods getGoodsById(int id){
         return goodsMapper.getGoodsById(id);
     }
@@ -29,11 +30,11 @@ public class GoodsService {
     }
 
     public void insertGoods(Goods goods){
-        goodsMapper.insertGoods(goods.getBusiness_id(),goods.getPhoto(),goods.getName(),goods.getIntroduction(),goods.getPrice(),goods.getDiscount(),goods.getSale(),goods.getScore());
+        goodsMapper.insertGoods(goods.getBusinessId(),goods.getPhoto(),goods.getName(),goods.getIntroduction(),goods.getPrice(),goods.getDiscount(),goods.getSale(),goods.getScore());
     }
 
     public void updateGoods(Goods goods){
-        goodsMapper.updateGoods(goods.getBusiness_id(),goods.getPhoto(),goods.getName(),goods.getIntroduction(),goods.getPrice(),goods.getDiscount(),goods.getSale(),goods.getScore());
+        goodsMapper.updateGoods(goods.getBusinessId(),goods.getPhoto(),goods.getName(),goods.getIntroduction(),goods.getPrice(),goods.getDiscount(),goods.getSale(),goods.getScore(), goods.getId());
     }
 
     public void deleteGoodsById(int id){

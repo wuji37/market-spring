@@ -2,6 +2,7 @@ package cn.itcast.business.web;
 
 import cn.itcast.business.mapper.Business_allMapper;
 import cn.itcast.business.pojo.Business_all;
+import cn.itcast.business.service.Business_allService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,58 +16,58 @@ import java.util.List;
 public class Business_allController {
 
     @Autowired
-    private Business_allMapper business_allMapper;
+    private Business_allService business_allService;
 
     @RequestMapping("all")
     public List<Business_all> getAll(){
-        System.err.println(business_allMapper.getAllBusiness());
-        return business_allMapper.getAllBusiness();
+        System.err.println(business_allService.getAllBusiness());
+        return business_allService.getAllBusiness();
     }
 
     @RequestMapping("id/{id}")
     public Business_all getById(@PathVariable("id") int id){
-        return business_allMapper.getBusinessById(id);
+        return business_allService.getBusinessById(id);
     }
 
 
     @RequestMapping("businessId/{id}")
     public List<Business_all> getByBusinessId(@PathVariable("id") int id){
-        return business_allMapper.getBusinessByBusinesssId(id);
+        return business_allService.getBusinessByBusinessId(id);
     }
 
     @RequestMapping("businessUserId/{id}")
     public List<Business_all> getByBusinessUserId(@PathVariable("id") int id){
-        return business_allMapper.getBusinessByBusinessUserId(id);
+        return business_allService.getBusinessByBusinessUserId(id);
     }
 
     @RequestMapping("update")
     public void update(@RequestBody Business_all business){
-        business_allMapper.updateBusiness_all(business.getUser_id(), business.getBusiness_id(), business.getBusiness_id());
+        business_allService.updateBusiness_all(business);
     }
 
     @RequestMapping("insert")
     public void insert(@RequestBody Business_all business){
-        business_allMapper.insertBusiness(business.getId(), business.getBusiness_id(), business.getBusiness_user_id());
+        business_allService.insertBusiness(business);
     }
 
     @RequestMapping("delete/id/{id}")
     public void deleteById(@PathVariable("id") int id){
-        business_allMapper.deleteBusinessById(id);
+        business_allService.deleteBusinessById(id);
     }
 
     @RequestMapping("delete/userId/{id}")
     public void deleteByUserId(@PathVariable("id") int id){
-        business_allMapper.deleteBusinessByUserId(id);
+        business_allService.deleteBusinessByUserId(id);
     }
 
     @RequestMapping("delete/businessId/{id}")
     public void deleteByBusinessId(@PathVariable("id") int id){
-        business_allMapper.deleteBusinessByBusinessId(id);
+        business_allService.deleteBusinessByBusinessId(id);
     }
 
     @RequestMapping("delete/businessUserId/{id}")
     public void deleteByBusinessUserId(@PathVariable("id") int id){
-        business_allMapper.deleteBusinessByBusinessUserId(id);
+        business_allService.deleteBusinessByBusinessUserId(id);
     }
 
 }
