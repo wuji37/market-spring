@@ -12,4 +12,6 @@ public class Business {
     private String introduction;
     private float score;
     private Blob photo;
+
+    private Business_user businessUser;
 }

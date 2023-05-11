@@ -3,6 +3,7 @@ package cn.itcast.business.pojo;
 import lombok.Data;
 
 import java.sql.Blob;
+import java.util.List;
 
 @Data
 public class Business_user {
@@ -12,4 +13,5 @@ public class Business_user {
     private int age;
     private String address;
     private Blob photo;
+
 }

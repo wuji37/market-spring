@@ -1,14 +1,16 @@
 package cn.itcast.business.pojo;
 
+import cn.itcast.feign.pojo.user.User;
 import lombok.Data;
 
-import java.sql.Blob;
+import java.util.List;
+
 
 @Data
 public class Goods {
     private int id;
     private int businessId;
-    private Blob photo;
+    private String photo;
     private String name;
     private String introduction;
     private float price;

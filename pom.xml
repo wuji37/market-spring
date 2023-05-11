@@ -13,7 +13,7 @@
         <module>user-service</module>
         <module>admin-service</module>
         <module>gateway</module>
-        <module>fein-api</module>
+        <module>feign-api</module>
     </modules>
 
     <!--    <modules>-->
@@ -75,7 +75,7 @@
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.version}</version>
+                <version>2.2.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -35,6 +35,11 @@ public class Business_allController {
         return business_allService.getBusinessByBusinessId(id);
     }
 
+    @RequestMapping("userId/{id}")
+    public List<Business_all> getBusinessByUserId(@PathVariable("id") int id){
+        return business_allService.getBusinessByUserId(id);
+    }
+
     @RequestMapping("businessUserId/{id}")
     public List<Business_all> getByBusinessUserId(@PathVariable("id") int id){
         return business_allService.getBusinessByBusinessUserId(id);

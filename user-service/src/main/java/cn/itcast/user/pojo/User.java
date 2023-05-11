@@ -1,8 +1,10 @@
 package cn.itcast.user.pojo;
 
+import cn.itcast.feign.pojo.business.Orders;
 import lombok.Data;
 
 import java.sql.Blob;
+import java.util.List;
 
 @Data
 public class User {
@@ -13,4 +15,6 @@ public class User {
     private String address;
     private Blob photo;
     private String sex;
+
+    private List<Orders> orders;
 }

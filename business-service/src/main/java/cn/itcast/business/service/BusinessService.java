@@ -1,17 +1,12 @@
 package cn.itcast.business.service;
 
 import cn.itcast.business.mapper.BusinessMapper;
-import cn.itcast.business.pojo.AllUser;
 import cn.itcast.business.pojo.Business;
-import cn.itcast.business.pojo.Business_all;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import cn.itcast.business.pojo.Business_user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Blob;
+
 import java.util.List;
 
 @Service
@@ -19,13 +14,18 @@ public class BusinessService {
 
     @Autowired
     private BusinessMapper businessMapper;
+    @Autowired
+    private Business_userService businessUserService;
 
     public List<Business> getAllBusiness(){
         return businessMapper.getAllBusiness();
     }
 
     public Business getBusinessById(int id){
-        return businessMapper.getBusinessById(id);
+        Business business=businessMapper.getBusinessById(id);
+        Business_user businessUser=businessUserService.getById(business.getBusinessUserId());
+        business.setBusinessUser(businessUser);
+        return business;
     }
 
     public Business getBusinessByUserId(int id){
@@ -38,7 +38,6 @@ public class BusinessService {
     }
 
     public void insertBusiness(Business business){
-        //int userId,String name,String intro,float score,Blob photo
         businessMapper.insertBusiness(business.getBusinessUserId(),business.getName(),business.getIntroduction(),business.getScore(),business.getPhoto());
     }
 

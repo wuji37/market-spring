@@ -11,7 +11,7 @@
         <module name="user-service" />
         <module name="admin-service" />
         <module name="gateway" />
-        <module name="fein-api" />
+        <module name="feign-api" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,7 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="admin-service" options="-parameters" />
       <module name="business-service" options="-parameters" />
-      <module name="fein-api" options="-parameters" />
+      <module name="feign-api" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>

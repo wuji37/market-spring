@@ -1,5 +1,7 @@
 package cn.itcast.user.web;
 
+import cn.itcast.feign.clients.business.BusinessClient;
+import cn.itcast.feign.pojo.business.Orders;
 import cn.itcast.user.pojo.User;
 import cn.itcast.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private BusinessClient businessClient;
 
     @RequestMapping("all")
     public List<User> getAllUser(){
@@ -39,5 +44,10 @@ public class UserController {
     @RequestMapping(path = "delete/{id}",method=RequestMethod.DELETE)
     public void deleteUserById(@PathVariable("id") int id){
         userService.deleteUserById(id);
+    }
+
+    @RequestMapping("getOrders/{userId}")
+    public List<Orders> getOrdersByUserId(@PathVariable("userId")int userId){
+        return businessClient.getOrdersByUserId(userId);
     }
 }

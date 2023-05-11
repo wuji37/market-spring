@@ -1,4 +1,4 @@
-package cn.itcast.feign.pojo;
+package cn.itcast.feign.pojo.business;
 
 import lombok.Data;
 
@@ -7,9 +7,11 @@ import java.sql.Blob;
 @Data
 public class Business {
     private int id;
-    private int business_user_id;
+    private int businessUserId;
     private String name;
     private String introduction;
     private float score;
-    private Blob photo;
+    private String photo;
+
+    private Business_user businessUser;
 }
