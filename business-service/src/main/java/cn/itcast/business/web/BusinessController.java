@@ -18,7 +18,7 @@ import java.sql.Blob;
 import java.util.List;
 
 @RestController
-@RequestMapping("business")
+@RequestMapping("business/business")
 public class BusinessController {
     @Autowired
     private BusinessService businessService;

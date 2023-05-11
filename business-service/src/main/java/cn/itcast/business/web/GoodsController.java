@@ -16,7 +16,7 @@ import java.util.Base64;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="goods")
+@RequestMapping(path="business/goods")
 public class GoodsController {
 
     @Autowired

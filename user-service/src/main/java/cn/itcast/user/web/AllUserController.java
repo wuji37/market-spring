@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("allUser")
+@RequestMapping("user/allUser")
 public class AllUserController {
 
     @Autowired

@@ -12,7 +12,7 @@ import java.net.URLDecoder;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "user",produces = "application/json;charset=utf-8")
+@RequestMapping(value = "user/user",produces = "application/json;charset=utf-8")
 public class UserController {
 
     @Autowired
