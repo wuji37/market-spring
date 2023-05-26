@@ -1,5 +1,6 @@
 package cn.itcast.feign.clients.business;
 
+import cn.itcast.feign.config.FeignConfiguration;
 import cn.itcast.feign.pojo.business.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @FeignClient("businessService")
+////@FeignClient(name="businessService",configuration = {FeignConfiguration.class})
+//@FeignClient(name="businessService",url="https://businessService",configuration = {FeignConfiguration.class})
 public interface BusinessClient {
 
     //操作订单信息
@@ -23,7 +26,7 @@ public interface BusinessClient {
     void insertOrders(@RequestBody Orders orders);
 
     @RequestMapping("business/orders/userId/{id}")
-    List<Orders> getOrdersByUserId(@PathVariable("id") int id);
+    List<String> getOrdersByUserId(@PathVariable("id") int id);
 
     @RequestMapping("business/orders/update")
     void updateOrders(@RequestBody Orders orders);

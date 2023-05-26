@@ -16,12 +16,12 @@ public interface UserMapper {
     User getUserById(int id);
 
     @Insert("insert into user(id,name,phone,age,sex,address,photo) values(null,#{name},#{phone},#{age},#{sex},#{address},null)")
-    void insertUser(String name,int phone,String sex,int age,String address);
+    void insertUser(String name,String phone,String sex,int age,String address);
 
     @Delete("delete from user where id=#{id}")
     void deleteUserById(int id);
 
     @Update("update user set name=#{name},age=#{age},sex=#{sex},phone=#{phone},address=#{address} where id=#{id}")
-    void updateUserById(String name,int phone,String sex,int age,String address,int id);
+    void updateUserById(String name,String phone,String sex,int age,String address,int id);
 
 }

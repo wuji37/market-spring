@@ -39,8 +39,8 @@ public class OrdersService {
         Goods goods=goodsService.getGoodsById(orders.getGoodsId());
         orders.setGoods(goods);
 
-        User user=userClient.findUserById(orders.getUserId());
-        orders.setUser(user);
+//        User user=userClient.findUserById(orders.getUserId());
+//        orders.setUser(user);
         return orders;
     }
 

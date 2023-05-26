@@ -3,12 +3,13 @@ package cn.itcast.admin.web;
 import cn.itcast.admin.pojo.AllUser;
 import cn.itcast.admin.service.AllUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("admin/alluser")
 public class AllUserController {
