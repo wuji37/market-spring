@@ -13,6 +13,11 @@ public class IPWhiteListFilterFactory implements GatewayFilterFactory<IPWhiteLis
     }
 
     @Override
+    public String name() {
+        return "IPWhiteListFilterFactory";
+    }
+
+    @Override
     public Class<Config> getConfigClass() {
         return Config.class;
     }

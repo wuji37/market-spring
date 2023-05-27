@@ -20,8 +20,6 @@ public class IPRangeGatewayFilter implements GatewayFilter {
     private RedisUtils redisUtils;
     private String ipStart;
     private String ipEnd;
-//    private final String ipEnd="10.67.110.10";
-
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {

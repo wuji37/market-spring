@@ -12,6 +12,6 @@ public class Business_user {
     private int phone;
     private int age;
     private String address;
-    private Blob photo;
+    private String photo;
 
 }

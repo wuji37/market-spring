@@ -8,6 +8,4 @@ public class AllUser {
     private String username;
     private String password;
 
-    private Business_user businessUser;
-
 }

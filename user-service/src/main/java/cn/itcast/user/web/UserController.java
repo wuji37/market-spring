@@ -1,6 +1,7 @@
 package cn.itcast.user.web;
 
 import cn.itcast.feign.clients.business.BusinessClient;
+import cn.itcast.feign.pojo.business.Orders;
 import cn.itcast.user.encryption.AesEncryption;
 import cn.itcast.user.encryption.EncryptionConfig;
 import cn.itcast.user.encryption.RSAEncryption;
@@ -41,15 +42,15 @@ public class UserController {
 
     @Autowired
     private Environment environment;
-//    @RequestMapping("all")
-//    public List<User> getAllUser(){
-//        return userService.getAllUser();
-//    }
+    @RequestMapping("all")
+    public List<User> getAllUser(){
+        return userService.getAllUser();
+    }
 
 
     //访问所有用户进行AES数据加密
-    @RequestMapping("all")
-    public List<String> getAllUser(){
+    @RequestMapping("AES/all")
+    public List<String> getAllUser1(){
 
         System.out.println(encryptionConfig.key);
         List<User> userList = userService.getAllUser();
@@ -91,13 +92,14 @@ public class UserController {
     }
 
 
-//    @RequestMapping("{id}")
-//    public User getUserById(@PathVariable("id") int id){
-//        return userService.getUserById(id);
-//    }
+    @RequestMapping("{id}")
+    public User getUserById2(@PathVariable("id") int id){
+        System.out.println(id);
+        return userService.getUserById(id);
+    }
 
     //返回单个用户的AES加密后的数据
-    @RequestMapping("id/{id}")
+    @RequestMapping("AES/{id}")
     public String getUserById1(@PathVariable("id") int id){
         User user=userService.getUserById(id);
         ObjectMapper objectMapper=new ObjectMapper();
@@ -113,7 +115,7 @@ public class UserController {
     }
 
     //使用RSA进行数据加密
-    @RequestMapping("{id}")
+    @RequestMapping("RSA/{id}")
     public String getUserById(@PathVariable("id") int id) throws Exception {
         User user=userService.getUserById(id);
         ObjectMapper objectMapper=new ObjectMapper();
@@ -172,9 +174,17 @@ public class UserController {
 //    }
 
     @RequestMapping("getOrders/{userId}")
-    public List<String> getOrdersByUserId(@PathVariable("userId")int userId){
+    public List<Orders> getOrdersByUserId(@PathVariable("userId")int userId){
 
-        List<String> list=businessClient.getOrdersByUserId(userId);
+        List<Orders> list=businessClient.getOrdersByUserId(userId);
+
+        return list;
+    }
+
+    @RequestMapping("getOrders/AES/{userId}")
+    public List<String> getOrdersByUserId1(@PathVariable("userId")int userId){
+
+        List<String> list=businessClient.getOrdersByUserIdAES(userId);
 
         return list;
     }

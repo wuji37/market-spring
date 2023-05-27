@@ -27,7 +27,7 @@ public class UserService {
 
 
     public void insertUser(User user){
-        userMapper.insertUser(user.getName(),user.getPhone(),user.getSex(),user.getAge(),user.getAddress());
+        userMapper.insertUser(user.getName(),user.getPhone(),user.getSex(),user.getAge(),user.getAddress(),user.getPhoto());
     }
 
     public void deleteUserById(int id){

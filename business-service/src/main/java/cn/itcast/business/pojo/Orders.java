@@ -16,6 +16,5 @@ public class Orders {
     private int unsubscribe;
     private float score;
 
-    private Goods goods;
     private User user;
 }

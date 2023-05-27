@@ -23,8 +23,4 @@ public class Orders {
     private LocalDateTime startTime;
     private int unsubscribe;
     private float score;
-
-    private Goods goods;
-    private User user;
-
 }

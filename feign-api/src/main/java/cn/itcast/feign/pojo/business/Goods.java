@@ -15,5 +15,4 @@ public class Goods {
     private int sale;
     private float score;
 
-    private Business business;
 }

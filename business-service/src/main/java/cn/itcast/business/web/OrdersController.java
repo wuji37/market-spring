@@ -74,7 +74,7 @@ public class OrdersController {
     }
 
     @RequestMapping("id/{id}")
-    public Orders getOrdersById(@PathVariable("id") int id) throws JsonProcessingException {
+    public Orders getOrdersById(@PathVariable("id") int id){
         Orders orders=ordersService.getOrdersById(id);
         return orders;
     }
@@ -133,7 +133,7 @@ public class OrdersController {
     }
 
 
-    @RequestMapping("userId/{id}")
+    @RequestMapping("AES/userId/{id}")
     public List<String> getOrdersByUserId(@PathVariable("id")int id){
 
         List<Orders> list=ordersService.getOrdersByUserId(id);
@@ -153,6 +153,14 @@ public class OrdersController {
 
         return list1;
     }
+
+    @RequestMapping("userId/{id}")
+    public List<Orders> getOrdersByUserId1(@PathVariable("id")int id){
+
+        List<Orders> list=ordersService.getOrdersByUserId(id);
+        return list;
+    }
+
 
     @RequestMapping("businessId/{id}")
     public List<Orders> getOrdersByBusinessId(@PathVariable("id")int id){

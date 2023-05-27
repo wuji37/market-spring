@@ -14,6 +14,11 @@ public class IPBlackListFilterFactory  implements GatewayFilterFactory<IPBlackLi
     }
 
     @Override
+    public String name() {
+        return "IPBlackListFilterFactory";
+    }
+
+    @Override
     public Class<Config> getConfigClass() {
         return Config.class;
     }

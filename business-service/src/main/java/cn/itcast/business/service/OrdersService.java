@@ -36,8 +36,8 @@ public class OrdersService {
 
     public Orders getOrdersById(int id){
         Orders orders=ordersMapper.getOrdersById(id);
-        Goods goods=goodsService.getGoodsById(orders.getGoodsId());
-        orders.setGoods(goods);
+//        Goods goods=goodsService.getGoodsById(orders.getGoodsId());
+//        orders.setGoods(goods);
 
 //        User user=userClient.findUserById(orders.getUserId());
 //        orders.setUser(user);

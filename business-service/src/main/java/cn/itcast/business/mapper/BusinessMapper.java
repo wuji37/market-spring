@@ -21,10 +21,10 @@ public interface BusinessMapper {
     Business getBusinessByUserId(int id);
 
     @Update("update business set businessUserId=#{userId},name=#{name},introduction=#{introduction},photo=#{photo}")
-    void updateBusiness(int userId, String name, String introduction, Blob photo);
+    void updateBusiness(int userId, String name, String introduction, String photo);
 
     @Insert("insert into Business(id,businessUserId,name,introduction,score,photo) values(null,#{userId},#{name},#{intro},#{score},#{photo})")
-    void insertBusiness(int userId,String name,String intro,float score,Blob photo);
+    void insertBusiness(int userId,String name,String intro,float score,String photo);
 
     @Delete("delete from Business where id=#{id}")
     void deleteBusinessById(int id);

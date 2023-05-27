@@ -15,8 +15,8 @@ public interface UserMapper {
     @Select("select * from user where id=#{id}")
     User getUserById(int id);
 
-    @Insert("insert into user(id,name,phone,age,sex,address,photo) values(null,#{name},#{phone},#{age},#{sex},#{address},null)")
-    void insertUser(String name,String phone,String sex,int age,String address);
+    @Insert("insert into user(id,name,phone,age,sex,address,photo) values(null,#{name},#{phone},#{age},#{sex},#{address},#{photo})")
+    void insertUser(String name,String phone,String sex,int age,String address,String photo);
 
     @Delete("delete from user where id=#{id}")
     void deleteUserById(int id);

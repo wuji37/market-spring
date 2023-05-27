@@ -26,7 +26,10 @@ public interface BusinessClient {
     void insertOrders(@RequestBody Orders orders);
 
     @RequestMapping("business/orders/userId/{id}")
-    List<String> getOrdersByUserId(@PathVariable("id") int id);
+    List<Orders> getOrdersByUserId(@PathVariable("id") int id);
+
+    @RequestMapping("business/orders/AES/userId/{id}")
+    List<String> getOrdersByUserIdAES(@PathVariable("id") int id);
 
     @RequestMapping("business/orders/update")
     void updateOrders(@RequestBody Orders orders);

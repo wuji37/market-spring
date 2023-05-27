@@ -13,5 +13,4 @@ public class Business {
     private float score;
     private String photo;
 
-    private Business_user businessUser;
 }

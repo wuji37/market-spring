@@ -3,10 +3,10 @@ server:
 
 
 # gateway网关中增加SSL验证，
-  ssl:
-    key-store: classpath:server.p12
-    key-store-password: 123456
-    key-store-type: PKCS12
+#  ssl:
+#    key-store: classpath:server.p12
+#    key-store-password: 123456
+#    key-store-type: PKCS12
 
 spring:
   application:
@@ -39,8 +39,11 @@ spring:
           uri: lb://userService
           predicates:
             - Path=/user/**
-
 #          filters:
+#            - name: IPRangeFilterFactory
+
+
+            #          filters:
 #            - RewritePath=/user/(?<segment>.*), /$\{segment}
 #            - SetPath=/user/**
 #            - SecureHeaders
@@ -118,9 +121,9 @@ Jwt:
 IP:
   Range:
     ipStart: 10.67.110.0
-    ipEnd: 10.67.110.147
-  WhiteList: 127.0.0.1,192.168.0.1,10.67.110.146,0:0:0:0:0:0:0:1
-  blackList: 192.168.0.1,10.67.110.146,0:0:0:0:0:0:0:1
+    ipEnd: 10.67.110.14
+  WhiteList: 127.0.0.1,192.168.0.1,10.67.110.146 ,0:0:0:0:0:0:0:1
+  blackList: 192.168.0.1,10.67.110.146 ,0:0:0:0:0:0:0:1
 
 SSL:
   key:
