@@ -14,15 +14,17 @@ public interface UserClient {
 
 
     //操作用户信息
-    @GetMapping("user/user/{id}")
+    @GetMapping("user/user/AES/{id}")
     String findUserById(@PathVariable("id") int id);
 
+    @GetMapping("user/user/RSA/{id}")
+    String findUserById2(@PathVariable("id") int id);
     @RequestMapping("user/user/all")
     List<User> getAllUser();
 
 
-    @RequestMapping("user/user/id/{id}")
-    String getUserById(@PathVariable("id") int id);
+//    @RequestMapping("user/user/id/{id}")
+//    String getUserById(@PathVariable("id") int id);
 
     @RequestMapping(path="user/user/insert",method = RequestMethod.POST)
     void insertUser(@RequestBody User user);

@@ -118,6 +118,7 @@ public class UserController {
     @RequestMapping("RSA/{id}")
     public String getUserById(@PathVariable("id") int id) throws Exception {
         User user=userService.getUserById(id);
+        user.setPhoto(null);
         ObjectMapper objectMapper=new ObjectMapper();
 
         String modulus=environment.getProperty("resPublicKey.modulus");

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -31,8 +32,6 @@ public class JWTGlobalFilter implements GlobalFilter {
 
         userId=environment.getProperty("Jwt.args.userId");
         username=environment.getProperty("Jwt.args.username");
-
-        System.out.println("构造方法："+userId+" "+username);
 
         String jwt=exchange.getRequest().getHeaders().getFirst("Authorization");
 
@@ -62,7 +61,7 @@ public class JWTGlobalFilter implements GlobalFilter {
         System.out.println("current Instant:"+currentTimeStamp.toEpochMilli()/1000);   //返回以秒为单位的时间戳，需要修改中间的部分
         // {"sub":"12345","name":"John Doe","iat":1684738394}  ，将一下代码中的iat替换为当前以秒为单位的时间戳，进行解码，然后修改postman中请求头数据
 
-        if(duration.toHours()<550 && s[1].equals(userId) && s[2].equals(username))
+        if(duration.toHours()<5500 && s[1].equals(userId) && s[2].equals(username))
             return true;
         else
             return false;
@@ -85,7 +84,6 @@ public class JWTGlobalFilter implements GlobalFilter {
             String userId = objectMapper.readTree(jsonPayload).get("sub").asText();
             String username = objectMapper.readTree(jsonPayload).get("name").asText();
             String iat = objectMapper.readTree(jsonPayload).get("iat").asText();
-
 
             s[0]=iat;
             s[1]=userId;

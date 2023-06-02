@@ -19,13 +19,9 @@ import java.util.Queue;
 //@Order(3)
 //@Component
 public class LeakBucketGlobalFilter implements GlobalFilter {
-
     @Autowired
     private Environment environment;
-
     private final Queue<Instant> bucket;
-
-    //在全局过滤器中无法使用@Value来获取值，需要使用environment来获取配置文件中的值
     public LeakBucketGlobalFilter() {
         this.bucket = new LinkedList<>();
     }
@@ -44,7 +40,6 @@ public class LeakBucketGlobalFilter implements GlobalFilter {
         while (bucket.peek() != null && Duration.between(bucket.peek(), currentTime).getSeconds() > leakRate) {
             bucket.poll(); // 从漏桶中移除过期的请求
         }
-
         if (bucket.size() >= capacity) {
             // 漏桶已满，拒绝请求或进行相应处理
             //return Mono.error(new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS));

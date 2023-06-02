@@ -54,7 +54,7 @@ public class OrdersController {
 //    }
 
     @RequestMapping("feign/id/{id}")
-    public Orders getOrdersByIdFeing(@PathVariable("id") int id) throws JsonProcessingException {
+    public Orders getOrdersByIdFeign(@PathVariable("id") int id) throws JsonProcessingException {
         Orders orders=ordersService.getOrdersById(id);
         String s=userClient.findUserById(orders.getUserId());
         ObjectMapper objectMapper = new ObjectMapper();
@@ -84,7 +84,7 @@ public class OrdersController {
     @RequestMapping("AES/id/{id}")
     public Orders getOrdersByIdAES(@PathVariable("id") int id) throws JsonProcessingException {
         Orders orders=ordersService.getOrdersById(id);
-        String s=userClient.getUserById(orders.getUserId());
+        String s=userClient.findUserById(orders.getUserId());
         ObjectMapper objectMapper = new ObjectMapper();
 
         String str=null;
@@ -103,10 +103,10 @@ public class OrdersController {
 
 
     //对用户信息进行RSA解密，然后返回未加密的订单数据
-    @RequestMapping("RSA/id/{id}")
+    @RequestMapping("RSANO/id/{id}")
     public Orders getOrdersByIdRSA(@PathVariable("id") int id) throws JsonProcessingException {
         Orders orders=ordersService.getOrdersById(id);
-        String s=userClient.findUserById(orders.getUserId());
+        String s=userClient.findUserById2(orders.getUserId());
         ObjectMapper objectMapper = new ObjectMapper();
 
         String modulus=environment.getProperty("resPrivateKey.modulus");
@@ -132,7 +132,48 @@ public class OrdersController {
         return orders;
     }
 
+    @RequestMapping("RSA/id/{id}")
+    public String getOrdersByIdRSA1(@PathVariable("id") int id) throws JsonProcessingException {
+        Orders orders=ordersService.getOrdersById(id);
+        orders.setStartTime(null);
+        String s=userClient.findUserById2(orders.getUserId());
+        ObjectMapper objectMapper = new ObjectMapper();
 
+        String modulus=environment.getProperty("resPrivateKey.modulus");
+        String exponent=environment.getProperty("resPrivateKey.exponent");
+
+        PrivateKey privateKey=rsaEncryption.getPrivateKey(modulus,exponent);
+
+        String str=null;
+        try {
+            str=rsaEncryption.decrypt(s,privateKey);
+            System.out.println(str);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        User user=objectMapper.readValue(str, User.class);
+
+        orders.setUser(user);
+
+
+        ObjectMapper objectMapper1=new ObjectMapper();
+
+        String modulus1=environment.getProperty("resPublicKey.modulus");
+        String exponent1=environment.getProperty("resPublicKey.exponent");
+        PublicKey publicKey=rsaEncryption.getPublicKey(modulus1,exponent1);
+
+        String s1 = "";
+        try {
+            s1=rsaEncryption.encrypt(objectMapper1.writeValueAsString(orders),publicKey);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return s1;
+    }
+
+
+    //获取用户数据，并返回加密后的订单
     @RequestMapping("AES/userId/{id}")
     public List<String> getOrdersByUserId(@PathVariable("id")int id){
 

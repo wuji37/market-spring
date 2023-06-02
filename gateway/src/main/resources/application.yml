@@ -39,15 +39,16 @@ spring:
           uri: lb://userService
           predicates:
             - Path=/user/**
+
+#          filters:
+#            - name: RequestRateLimiter #请求数限流 名字不能随便写
+#              args:
+#                  key-resolver: "#{@ipKeyResolver}"
+#                  redis-rate-limiter.replenishRate: 1 #令牌桶每秒填充平均速率，
+#                  redis-rate-limiter.burstCapacity: 1 #令牌桶总容量
 #          filters:
 #            - name: IPRangeFilterFactory
 
-
-            #          filters:
-#            - RewritePath=/user/(?<segment>.*), /$\{segment}
-#            - SetPath=/user/**
-#            - SecureHeaders
-#            - SSL=force
 
 #实现基于单个服务的JWT验证
 #          filters:
@@ -89,6 +90,11 @@ spring:
 
 
       default-filters: #默认过滤器，对所有路由生效
+#        - name: RequestRateLimiter #请求数限流 名字不能随便写
+#          args:
+#            key-resolver: "#{@ipKeyResolver}"
+#            redis-rate-limiter.replenishRate: 1 #令牌桶每秒填充平均速率，
+#            redis-rate-limiter.burstCapacity: 1 #令牌桶总容量
 
       globalcors: # 全局的跨域处理
         add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题

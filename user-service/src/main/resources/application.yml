@@ -1,5 +1,10 @@
 server:
   port: 8081
+# gateway网关中增加SSL验证，
+#  ssl:
+#    key-store: classpath:server.p12
+#    key-store-password: 123456
+#    key-store-type: PKCS12
 
 spring:
   application:

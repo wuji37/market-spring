@@ -10,7 +10,7 @@ import java.util.List;
 public class User {
     private int id;
     private String name;
-    private int phone;
+    private String phone;
     private int age;
     private String address;
     private String photo;
