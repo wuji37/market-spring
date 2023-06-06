@@ -1,0 +1,11 @@
+cn\itcast\feign\pojo\business\Goods.class
+cn\itcast\feign\clients\business\BusinessClient.class
+cn\itcast\feign\pojo\business\Orders.class
+cn\itcast\feign\pojo\business\Business.class
+cn\itcast\feign\config\FeignConfiguration.class
+cn\itcast\feign\pojo\business\Business_all.class
+cn\itcast\feign\pojo\business\Business_user.class
+cn\itcast\feign\clients\user\UserClient.class
+cn\itcast\feign\pojo\business\AllUser.class
+cn\itcast\feign\pojo\user\AllUser.class
+cn\itcast\feign\pojo\user\User.class

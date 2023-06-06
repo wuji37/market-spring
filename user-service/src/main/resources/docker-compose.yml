@@ -1,0 +1,30 @@
+version: "1.0"
+
+services:
+  nacos:
+    images:nacos/nacos-server
+    environment:
+      MODE: standalone
+    ports:
+      - "8848:8848"
+    restart: always
+  mysql:
+    image: mysql:5.7.25
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+      - "$PWD/market-spring/mysql/data:/var/lib/mysql"
+      - "$PWD/market-spring/mysql/conf:/etc/mysql/conf.d/"
+  user:
+    build: ./user-service
+    depends_on:
+      - nacos
+      - feign-api
+  business:
+    build: ./business-service
+  admin:
+    build: ./admin-service
+  gateway:
+    build: ./gateway
+  feign-api:
+    build: ./feign-api

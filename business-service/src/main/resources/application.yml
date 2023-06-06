@@ -10,7 +10,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://localhost:3307/business?useSSL=false&characterEncoding=UTF-8
+    url: jdbc:mysql://mysql:3306/business?useSSL=false&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
 
   application:
@@ -18,7 +18,7 @@ spring:
 
   cloud:
     nacos:
-      server-addr: localhost:8848
+      server-addr: nacos:8848
 mybatis:
   type-aliases-package: cn.itcast.business.pojo
   configuration:
